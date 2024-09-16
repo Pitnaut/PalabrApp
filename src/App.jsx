@@ -4,12 +4,12 @@ import './App.css'
 function App() {
 
   return (
-    <>
-      <div className='main'>
+    <div className='main'>
+      <h1>PalabrApp</h1>
+      <div className='components'>
         <Palabra />
       </div>
-     
-    </>
+    </div>
   )
 }
 
