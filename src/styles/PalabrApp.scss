@@ -1,0 +1,27 @@
+.palabrapp {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.titulo {
+  text-transform: capitalize;
+}
+
+.notificacion {
+  text-align: center;
+  height: 1rem;
+  margin: 1em;
+  color: salmon;
+  font-weight: 600;
+  font-size: 1.25rem;
+
+  &--green {
+    color: rgb(114, 250, 143);
+  }
+}

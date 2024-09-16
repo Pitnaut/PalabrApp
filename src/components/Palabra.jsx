@@ -19,7 +19,7 @@ const Palabra = () => {
 
   return (
     <div className='palabra'>
-      <h1>{palabra}</h1>
+      <p>{palabra}</p>
     </div>
   );
 };

@@ -1,6 +1,13 @@
-.main {
-  margin: 0 auto;
+@import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0b2b4b;
+  color:#eedcd4;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  font-family: "SUSE", sans-serif;
+  text-transform: uppercase;
 }

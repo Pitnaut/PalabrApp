@@ -1,6 +1,7 @@
 import {useState} from 'react';
+import '../stylesheets/Game.css';
 
-const Game = () =>  {
+const InputWord = () =>  {
   const [userInput, setUserInput] = useState("");
 
   const handleInputChange = (event) => {
@@ -20,4 +21,4 @@ const Game = () =>  {
 
 };
 
-export default Game;
+export default InputWord;
