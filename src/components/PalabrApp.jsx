@@ -4,7 +4,7 @@ import Row from "./Row";
 import Keyboard from "./Keyboard";
 import { LETRAS, palabras } from "../data/palabrasYLetras";
 
-const SOLUCION = "palco";
+const SOLUCION = palabras[Math.floor(Math.random() * palabras.length)];
 
 export default function PalabrApp() {
   const [guesses, setGuesses] = useState([
