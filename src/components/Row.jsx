@@ -2,8 +2,7 @@ import "../styles/Row.scss";
 
 export default function Row({ 
   palabra,
-  marcarComoSolucion,
-  marcarLetrasPresentesAusentes,
+  aplicarRotacion,
   solucion,
   bounceOnError,
 }) {
@@ -11,16 +10,19 @@ export default function Row({
     <div className={`fila ${bounceOnError && "fila--bounce"}`}>
       {palabra.split("").map(
         (letra, index) => {
-          const bgClass = solucion.includes(letra) ? "presente" : "ausente";
+          const bgClass = 
+            solucion[index] === letra
+            ? "correcta" 
+            : solucion.includes(letra) 
+            ? "presente" 
+            : "ausente";
 
 
         return (
         <div 
-          className={`letra ${
-            marcarComoSolucion && `correcta rotate--${index + 1}00`
-          } ${
-            marcarLetrasPresentesAusentes && `${bgClass} rotate--${index + 1}00`        
-          } ${letra !== " " && "letra--activa"} ${solucion[index] === letra && "correcta"}`} 
+          className={`letra ${bgClass} ${
+            aplicarRotacion && `rotate--${index + 1}00`
+          } ${letra !== " " && "letra--activa"}`} 
             key={index}
         >
           {letra}

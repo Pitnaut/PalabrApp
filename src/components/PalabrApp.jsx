@@ -5,6 +5,7 @@ import Keyboard from "./Keyboard";
 import { LETRAS, palabras } from "../data/palabrasYLetras";
 
 const SOLUCION = palabras[Math.floor(Math.random() * palabras.length)];
+console.log(SOLUCION);
 
 export default function PalabrApp() {
   const [guesses, setGuesses] = useState([
@@ -146,8 +147,10 @@ export default function PalabrApp() {
           <Row 
             key={index} 
             palabra={guess} 
-            marcarComoSolucion={solucionEncontrada && filaActivaIndex === index}
-            marcarLetrasPresentesAusentes={filaActivaIndex > index}
+            aplicarRotacion={
+              filaActivaIndex > index || 
+              (solucionEncontrada && filaActivaIndex === index)
+            }
             solucion={SOLUCION}
             bounceOnError={
               notificacion !== "¡Bien hecho!" && 
