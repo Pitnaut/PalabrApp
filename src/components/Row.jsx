@@ -16,8 +16,7 @@ export default function Row({
             : solucion.includes(letra) 
             ? "presente" 
             : "ausente";
-
-
+            
         return (
         <div 
           className={`letra ${bgClass} ${

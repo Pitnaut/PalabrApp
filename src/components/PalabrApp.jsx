@@ -24,6 +24,7 @@ export default function PalabrApp() {
   const [letrasCorrectas, setLetrasCorrectas] = useState([]);
   const [letrasPresentes, setLetrasPresentes] = useState([]);
   const [letrasAusentes, setLetrasAusentes] = useState([]);
+  const [juegoTerminado, setJuegoTerminado] = useState(false);
 
   const palabrAppRef = useRef();
 
@@ -63,6 +64,7 @@ export default function PalabrApp() {
         setSolucionEncontrada(true);
         setNotificacion("¡Bien hecho!");
         setLetrasCorrectas([...SOLUCION]);
+        setJuegoTerminado(true);
       } else {
         let letrasCorrectas = [];
 
@@ -95,6 +97,11 @@ export default function PalabrApp() {
       }
     } else {
       setNotificacion("Solo palabras de 5 letras")
+    }
+
+    if (filaActivaIndex === guesses.length -1) {
+      setNotificacion(`¡No quedan intentos. La palabra era: ${SOLUCION}`);
+      setJuegoTerminado(true);
     }
   };
 
