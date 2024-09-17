@@ -97,7 +97,7 @@ export default function PalabrApp() {
     }
   };
 
-  const darAtras = () => {
+  const borrar = () => {
     setNotificacion("");
 
     if (guesses[filaActivaIndex][0] !== " ") {
@@ -128,7 +128,7 @@ export default function PalabrApp() {
     }
 
     if (event.key === "Backspace") {
-      darAtras();
+      borrar();
     }
   }
 
@@ -157,6 +157,14 @@ export default function PalabrApp() {
           />
         );
       })}
+      <Keyboard 
+        letrasPresentes={letrasPresentes}
+        letrasCorrectas={letrasCorrectas}
+        letrasAusentes={letrasAusentes}
+        escribeLetra={escribeLetra}
+        darAlEnter={darAlEnter}
+        borrar={borrar} 
+      />
     </div>     
   )
 }
