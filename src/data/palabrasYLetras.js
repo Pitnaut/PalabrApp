@@ -4,7 +4,7 @@ export const LETRAS = [
 'z', 'x', 'c', 'v', 'b', 'n', 'm'
 ];
 
-export const PALABRAS = [
+export const palabras = [
   "estoy",
   "tengo",
   "vamos",
