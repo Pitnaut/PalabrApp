@@ -98,7 +98,20 @@ export default function PalabrApp() {
   };
 
   const darAtras = () => {
-    //to later
+    setNotificacion("");
+
+    if (guesses[filaActivaIndex][0] !== " ") {
+      const newGuesses = [...guesses];
+
+      newGuesses[filaActivaIndex] = reemplazarCaracter(
+        newGuesses[filaActivaIndex], 
+        letraActivaIndex - 1, 
+        " "
+      );
+
+      setGuesses(newGuesses);
+      setLetraActivaIndex((index) => index - 1);
+    }
   };
 
   const handleKeyDown = (event) => {
