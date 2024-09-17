@@ -1,14 +1,14 @@
-.row {
+.fila {
   display: flex;
   gap: 5px;
   font-weight: 800;
   font-size: 2rem;
 
   &--bounce {
-    animation: 0.3 linear bounce;
+    animation: bounce 0.3s linear;
   }
 
-  .letter {
+  .letra {
     width: 60px;
     height: 60px;
     background-color: #0b2b4b;
@@ -20,7 +20,7 @@
     position: relative;
     transform-style: preserve-3d;
 
-    &--active {
+    &--activa {
       border-color: #53524f;
       animation: 0.1s linear scale;
     }
@@ -32,54 +32,65 @@
       height: 100%;
       display: flex;
       justify-content: center;
+      align-items: center;
       transform: rotateX(180deg);
       backface-visibility: hidden;
     }
   }
+
+  .rotate {
+    &--100 {
+      animation: 0.5s linear 0.1s rotate forwards;
+    }
+  
+    &--200 {
+      animation: 0.5s linear 0.2s rotate forwards;
+    }
+  
+    &--300 {
+      animation: 0.5s linear 0.3s rotate forwards;
+    }
+  
+    &--400 {
+      animation: 0.5s linear 0.4s rotate forwards;
+    }
+  
+    &--500 {
+      animation: 0.5s linear 0.5s rotate forwards;
+    }
+  }
+  
+  .presente {
+    .back {
+      background-color: rgb(185, 185, 65);
+      border-radius: 50%;
+    }
+  }
+  
+  .ausente {
+    .back {
+      background-color: rgb(129, 129, 129);
+      border-radius: 50%;
+    }    
+  }
+  
+  .correcta {
+    .back {
+      background-color: rgb(64, 129, 50);
+      border-radius: 50%;
+    }     
+  }
+  
 }
 
-.rotate {
-  &--100 {
-    animation: 0.5s linear 0.1s rotate forwards;
-  }
 
-  &--200 {
-    animation: 0.5s linear 0.2s rotate forwards;
-  }
-
-  &--300 {
-    animation: 0.5s linear 0.3s rotate forwards;
-  }
-
-  &--400 {
-    animation: 0.5s linear 0.4s rotate forwards;
-  }
-
-  &--500 {
-    animation: 0.5s linear 0.5s rotate forwards;
-  }
-}
-
-.present {
-  .back {
-    background-color: rgb(185, 185, 65);
-  }
-
-  .absent {
-    background-color: rgb(129, 129, 129);
-  }
-
-  .correct {
-    background-color: rgb(64, 129, 50);
-  }
-}
 
 @keyframes rotate {
   0% {
-    transoform: rotate3d(1, 0, 0, 0deg);
+    transform: rotate3d(1, 0, 0, 0deg);
   }
   100% {
-    transoform: rotate3d(1, 0, 0, 180deg);
+    transform: rotate3d(1, 0, 0, 180deg);
   }
 }
 

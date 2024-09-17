@@ -125,9 +125,24 @@ export default function PalabrApp() {
     }}
     onKeyDown={handleKeyDown}>
       <h1 className="titulo">PalabrApp</h1>
-      <div className="notificacion">{notificacion}</div>
+      <div className={`notificacion ${solucionEncontrada && "notificacion--green"}`}>
+        {notificacion}
+      </div>
       {guesses.map((guess, index) => {
-        return <Row key={index} word={guess} />;
+        return (
+          <Row 
+            key={index} 
+            palabra={guess} 
+            marcarComoSolucion={solucionEncontrada && filaActivaIndex === index}
+            marcarLetrasPresentesAusentes={filaActivaIndex > index}
+            solucion={SOLUCION}
+            bounceOnError={
+              notificacion !== "¡Bien hecho!" && 
+              notificacion !== "" && 
+              filaActivaIndex === index
+            } 
+          />
+        );
       })}
     </div>     
   )
