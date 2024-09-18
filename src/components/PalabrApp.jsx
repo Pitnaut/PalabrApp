@@ -55,7 +55,7 @@ export default function PalabrApp() {
   const darAlEnter = () => {
     if (letraActivaIndex === 5) {
       const guessActual = guesses[filaActivaIndex];
-
+  
       if (!palabras.includes(guessActual)) {
         setNotificacion("La palabra no está en la lista");
       } else if (guessesFallados.includes(guessActual)) {
@@ -67,48 +67,42 @@ export default function PalabrApp() {
         setJuegoTerminado(true);
       } else {
         let letrasCorrectas = [];
-
+  
         [...guessActual].forEach((letra, index) => {
           if (SOLUCION[index] === letra) letrasCorrectas.push(letra);
         });
-
+  
         setLetrasCorrectas([...new Set(letrasCorrectas)]);
-
+  
         setLetrasPresentes([
           ...new Set([
             ...letrasPresentes, 
             ...[...guessActual].filter((letra) => SOLUCION.includes(letra)),
           ]),
         ]);
-
+  
         setLetrasAusentes([
           ...new Set([
             ...letrasAusentes, 
             ...[...guessActual].filter((letra) => !SOLUCION.includes(letra)),
           ]),
         ]);
-
-        setguessesFallados([...guessesFallados, guessActual]);
-
-        setFilaActivaIndex((index) => index + 1);
-
-        setLetraActivaIndex(0);
-
+  
+        if (filaActivaIndex === guesses.length - 1 && !solucionEncontrada) {
+          setNotificacion(`¡No quedan intentos. La palabra era: ${SOLUCION}`);
+          setJuegoTerminado(true);
+        } else {
+          setFilaActivaIndex(index => index + 1);
+          setLetraActivaIndex(0);
+        }
       }
-    } else {
-      setNotificacion("Solo palabras de 5 letras")
-    }
-
-    if (filaActivaIndex === guesses.length -1) {
-      setNotificacion(`¡No quedan intentos. La palabra era: ${SOLUCION}`);
-      setJuegoTerminado(true);
     }
   };
 
   const borrar = () => {
     setNotificacion("");
 
-    if (guesses[filaActivaIndex][0] !== " ") {
+    if (guesses[filaActivaIndex][0] !== " " && !juegoTerminado) {
       const newGuesses = [...guesses];
 
       newGuesses[filaActivaIndex] = reemplazarCaracter(
@@ -156,7 +150,8 @@ export default function PalabrApp() {
             palabra={guess} 
             aplicarRotacion={
               filaActivaIndex > index || 
-              (solucionEncontrada && filaActivaIndex === index)
+              (solucionEncontrada && filaActivaIndex === index) ||
+              (juegoTerminado && filaActivaIndex === index)
             }
             solucion={SOLUCION}
             bounceOnError={
