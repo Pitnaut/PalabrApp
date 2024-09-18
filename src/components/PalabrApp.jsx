@@ -87,11 +87,14 @@ export default function PalabrApp() {
             ...[...guessActual].filter((letra) => !SOLUCION.includes(letra)),
           ]),
         ]);
+
+        
   
         if (filaActivaIndex === guesses.length - 1 && !solucionEncontrada) {
           setNotificacion(`¡No quedan intentos. La palabra era: ${SOLUCION}`);
           setJuegoTerminado(true);
         } else {
+          setguessesFallados([...guessesFallados, guessActual]);
           setFilaActivaIndex(index => index + 1);
           setLetraActivaIndex(0);
         }
